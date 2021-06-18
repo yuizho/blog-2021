@@ -9,9 +9,9 @@ export default function Home() {
         <title>blog</title>
       </Head>
       <h1>Hi!!!!!</h1>
-      <Link href="/blog/contents/1">content1</Link>
+      <Link href="/contents/1">content1</Link>
       <br />
-      <Link href="/blog/contents/2">content2</Link>
+      <Link href="/contents/2">content2</Link>
     </>
   );
 }
