@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 
-export default function Home() {
+const Home: FC = () => {
   return (
     <>
       <Head>
@@ -14,4 +14,6 @@ export default function Home() {
       <Link href="/contents/2">content2</Link>
     </>
   );
-}
+};
+
+export default Home;
