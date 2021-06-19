@@ -2,8 +2,7 @@ import Head from 'next/head';
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-const Home: FC = () => {
-  return (
+const Home: FC = () => (
     <>
       <Head>
         <title>blog</title>
@@ -14,6 +13,5 @@ const Home: FC = () => {
       <Link href="/contents/2">content2</Link>
     </>
   );
-};
 
 export default Home;
