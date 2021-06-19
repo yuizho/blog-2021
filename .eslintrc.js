@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: ['next', 'next/core-web-vitals', 'airbnb', 'prettier'],
   rules: {
+    'no-use-before-define': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [
       1,
