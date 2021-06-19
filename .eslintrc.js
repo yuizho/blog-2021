@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: ['next', 'next/core-web-vitals', 'airbnb', 'prettier'],
-  ignorePatterns: ['pages/_app.tsx'],
+  ignorePatterns: ['pages/_app.tsx', '*.stories.*'],
   rules: {
     'no-use-before-define': 'off',
     'react/react-in-jsx-scope': 'off',
