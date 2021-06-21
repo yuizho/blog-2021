@@ -9,8 +9,8 @@ export default {
 const Template: Story = () => (
   <ArticleCards
     articles={[
-      { id: 1, title: 'title1', url: '/articles/1' },
-      { id: 2, title: 'title2', url: '/articles/2' },
+      { id: '1', title: 'title1', url: '/articles/1' },
+      { id: '2', title: 'title2', url: '/articles/2' },
     ]}
   />
 );

@@ -7,7 +7,7 @@ export default {
 } as Meta;
 
 const Template: Story = () => (
-  <ArticleCard id={1} title="title1" url="/articles/1" />
+  <ArticleCard id={'1'} title="title1" url="/articles/1" />
 );
 
 export const Default = Template.bind({});
