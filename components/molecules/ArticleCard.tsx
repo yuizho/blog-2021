@@ -7,10 +7,10 @@ export type Props = {
   url: string;
 };
 
-const Article: FC<Props> = ({ id, title, url }: Props) => (
+const ArticleCard: FC<Props> = ({ id, title, url }: Props) => (
     <li key={id}>
       <Link href={url}>{title}</Link>
     </li>
   );
 
-export default Article;
+export default ArticleCard;

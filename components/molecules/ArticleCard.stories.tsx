@@ -1,13 +1,13 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
-import Article from './Article';
+import ArticleCard from './ArticleCard';
 
 export default {
-  title: 'molecules/Article',
-  component: Article,
+  title: 'molecules/ArticleCard',
+  component: ArticleCard,
 } as Meta;
 
 const Template: Story = () => (
-  <Article id={1} title="title1" url="/articles/1" />
+  <ArticleCard id={1} title="title1" url="/articles/1" />
 );
 
 export const Default = Template.bind({});
