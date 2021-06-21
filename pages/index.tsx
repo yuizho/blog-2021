@@ -9,9 +9,9 @@ const Home: FC = () => (
       <title>blog</title>
     </Head>
     <Header />
-    <Link href="/contents/1">content1</Link>
+    <Link href="/articles/1">content1</Link>
     <br />
-    <Link href="/contents/2">content2</Link>
+    <Link href="/articles/2">content2</Link>
   </>
 );
 

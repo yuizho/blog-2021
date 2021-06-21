@@ -8,7 +8,7 @@ const Content: FC = () => {
   return (
     <>
       <Header />
-      <div> {router.query.contentId}</div>
+      <div> {router.query.articleId}</div>
     </>
   );
 };
