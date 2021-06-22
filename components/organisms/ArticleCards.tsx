@@ -7,16 +7,16 @@ type Props = {
 
 const ArticleCards: FC<Props> = ({ articles }: Props) => (
   <>
-    <ul>
-      {articles.map((article) => (
+    {articles.map((article) => (
+      <div className="mt-5">
         <ArticleCard
           key={article.id}
           id={article.id}
           title={article.title}
           url={article.url}
         />
-      ))}
-    </ul>
+      </div>
+    ))}
   </>
 );
 
