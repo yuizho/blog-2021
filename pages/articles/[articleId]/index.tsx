@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import React, { FC } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import Article from '../../../components/organisms/Article';
-import Header from '../../../components/organisms/Header';
+import Frame from '../../../components/templates/Frame';
 
 type Props = {
   content: Content;
@@ -23,11 +23,12 @@ type Content = {
 };
 
 const ArticleDetails: FC<Props> = ({ content }: Props) => (
-    <>
-      <Header />
+  <>
+    <Frame>
       <Article title={content.title} body={content.body} />
-    </>
-  );
+    </Frame>
+  </>
+);
 
 export const getStaticPaths = async () => {
   const requestHeaders = new Headers();

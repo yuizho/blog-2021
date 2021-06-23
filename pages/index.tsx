@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import Header from '../components/organisms/Header';
 import ArticleCards from '../components/organisms/ArticleCards';
+import Frame from '../components/templates/Frame';
 
 type Props = {
   contents: Array<Content>;
@@ -30,15 +30,15 @@ const Home: FC<Props> = ({ contents }: Props) => (
       <title>blog</title>
     </Head>
 
-    <Header />
-
-    <ArticleCards
-      articles={contents.map((content) => ({
-        id: content.id,
-        title: content.title,
-        url: `/articles/${content.id}`,
-      }))}
-    />
+    <Frame>
+      <ArticleCards
+        articles={contents.map((content) => ({
+          id: content.id,
+          title: content.title,
+          url: `/articles/${content.id}`,
+        }))}
+      />
+    </Frame>
   </>
 );
 
