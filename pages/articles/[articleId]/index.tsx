@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import React, { FC } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import Article from '../../../components/organisms/Article';
+import Header from '../../../components/organisms/Header';
 
 type Props = {
   content: Content;
@@ -21,10 +22,14 @@ type Content = {
   revisedAt: string;
 };
 
-const ArticleDetails: FC<Props> = ({ content }: Props) => <Article title={content.title} body={content.body} />;
+const ArticleDetails: FC<Props> = ({ content }: Props) => (
+    <>
+      <Header />
+      <Article title={content.title} body={content.body} />
+    </>
+  );
 
 export const getStaticPaths = async () => {
-  console.log('getStaticPaths');
   const requestHeaders = new Headers();
   requestHeaders.set('X-API-KEY', process.env.API_KEY || '');
   const key = {
