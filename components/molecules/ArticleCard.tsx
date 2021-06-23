@@ -11,7 +11,7 @@ export type Props = {
 const ArticleCard: FC<Props> = ({ id, title, url }: Props) => (
   <div
     key={id}
-    className="max-w-lg mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+    className="border max-w-lg mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
   >
     <div className="md:flex">
       <div className="md:flex-shrink-0">
@@ -23,9 +23,11 @@ const ArticleCard: FC<Props> = ({ id, title, url }: Props) => (
       </div>
       <div className="p-6">
         <Link href={url}>
-          <a className="text-xl font-semibold hover:underline">{title}</a>
+          <a className="text-lg font-semibold text-gray-700 hover:underline">
+            {title}
+          </a>
         </Link>
-        <p className="mt-2 text-sm  text-gray-500">2021-06-02</p>
+        <p className="mt-2 text-sm  text-gray-600">2021-06-02</p>
         <p className="mt-2 tracking-wide text-gray-500">
           これはテストの文章だから特に内容はないんだけど、こんな感じで文章のサマリーをのせたいんだよね。
         </p>
