@@ -3,6 +3,11 @@ import React, { FC } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import Article from '../../../components/organisms/Article';
 import Frame from '../../../components/templates/Frame';
+import {
+  Content,
+  fetchArticleBy,
+  fetchArticleIds,
+} from '../../../api/articles/ArticlesClient';
 
 type Props = {
   content: Content;
@@ -11,34 +16,6 @@ type Props = {
 interface Params extends ParsedUrlQuery {
   articleId: string;
 }
-
-type Thumbnail = {
-  url: string;
-  height: number;
-  width: number;
-};
-
-type Category = {
-  id: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-};
-
-type Content = {
-  id: string;
-  title: string;
-  body: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  summary?: string;
-  thumbnail?: Thumbnail;
-  categories: Array<Category>;
-};
 
 const ArticleDetails: FC<Props> = ({ content }: Props) => (
   <>
@@ -54,33 +31,12 @@ const ArticleDetails: FC<Props> = ({ content }: Props) => (
 );
 
 export const getStaticPaths = async () => {
-  const requestHeaders = new Headers();
-  requestHeaders.set('X-API-KEY', process.env.API_KEY || '');
-  const key = {
-    headers: requestHeaders,
-  };
-
-  // TODO: Error handling
-  const result = await fetch(
-    'https://yuizho.microcms.io/api/v1/articles?fields=id',
-    key,
-  )
-    .then((res) => res.json())
-    .then(
-      (json) =>
-        json as {
-          contents: Array<{ id: string }>;
-          totalCount: number;
-          offset: number;
-          limit: number;
-        },
-    );
-
+  const ids = await fetchArticleIds();
   return {
     fallback: false, // TODO: falseのままだとダメそう
-    paths: result.contents.map((content) => ({
+    paths: ids.map((id) => ({
       params: {
-        articleId: content.id,
+        articleId: id,
       },
     })),
   };
@@ -90,24 +46,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   context,
 ) => {
   const articleId = context.params?.articleId || '';
-
-  const requestHeaders = new Headers();
-  requestHeaders.set('X-API-KEY', process.env.API_KEY || '');
-  const key = {
-    headers: requestHeaders,
-  };
-
-  // TODO: Error handling
-  const result = await fetch(
-    `https://yuizho.microcms.io/api/v1/articles/${articleId}`,
-    key,
-  )
-    .then((res) => res.json())
-    .then((json) => json as Content);
-
+  const content = await fetchArticleBy(articleId);
   return {
     props: {
-      content: result,
+      content,
     },
   };
 };

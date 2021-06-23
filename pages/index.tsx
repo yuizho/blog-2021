@@ -1,45 +1,17 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React, { FC } from 'react';
+import { ParsedUrlQuery } from 'querystring';
+import { Content, fetchArticles } from '../api/articles/ArticlesClient';
 import ArticleCards from '../components/organisms/ArticleCards';
 import Frame from '../components/templates/Frame';
 
+interface Params extends ParsedUrlQuery {
+  articleId: string;
+}
+
 type Props = {
   contents: Array<Content>;
-};
-
-type Thumbnail = {
-  url: string;
-  height: number;
-  width: number;
-};
-
-type Category = {
-  id: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-};
-
-type Content = {
-  id: string;
-  title: string;
-  body: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  summary?: string;
-  thumbnail?: Thumbnail;
-  categories: Array<Category>;
-};
-
-type ApiResult = {
-  contents: Array<Content>;
-  totalCount: number;
-  offset: number;
-  limit: number;
 };
 
 const Home: FC<Props> = ({ contents }: Props) => (
@@ -63,26 +35,13 @@ const Home: FC<Props> = ({ contents }: Props) => (
   </>
 );
 
-export async function getStaticProps() {
-  const requestHeaders = new Headers();
-  requestHeaders.set('X-API-KEY', process.env.API_KEY || '');
-  const key = {
-    headers: requestHeaders,
-  };
-
-  // TODO: Error handling
-  const result = await fetch(
-    'https://yuizho.microcms.io/api/v1/articles?fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail',
-    key,
-  )
-    .then((res) => res.json())
-    .then((json) => json as ApiResult);
-
+export const getStaticProps: GetStaticProps<Props, Params> = async () => {
+  const contents = await fetchArticles();
   return {
     props: {
-      contents: result.contents,
+      contents,
     },
   };
-}
+};
 
 export default Home;
