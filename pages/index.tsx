@@ -7,6 +7,21 @@ type Props = {
   contents: Array<Content>;
 };
 
+type Thumbnail = {
+  url: string;
+  height: number;
+  width: number;
+};
+
+type Category = {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+};
+
 type Content = {
   id: string;
   title: string;
@@ -15,6 +30,9 @@ type Content = {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
+  summary?: string;
+  thumbnail?: Thumbnail;
+  categories: Array<Category>;
 };
 
 type ApiResult = {
@@ -36,6 +54,9 @@ const Home: FC<Props> = ({ contents }: Props) => (
           id: content.id,
           title: content.title,
           url: `/articles/${content.id}`,
+          thumbnail: content.thumbnail?.url || '',
+          summary: content.summary || '',
+          publishedAt: content.publishedAt,
         }))}
       />
     </Frame>
@@ -51,7 +72,7 @@ export async function getStaticProps() {
 
   // TODO: Error handling
   const result = await fetch(
-    'https://yuizho.microcms.io/api/v1/articles?fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt',
+    'https://yuizho.microcms.io/api/v1/articles?fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail',
     key,
   )
     .then((res) => res.json())

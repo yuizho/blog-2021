@@ -14,6 +14,9 @@ const ArticleCards: FC<Props> = ({ articles }: Props) => (
           id={article.id}
           title={article.title}
           url={article.url}
+          summary={article.summary}
+          thumbnail={article.thumbnail}
+          publishedAt={article.publishedAt}
         />
       </div>
     ))}

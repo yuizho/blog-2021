@@ -12,6 +12,21 @@ interface Params extends ParsedUrlQuery {
   articleId: string;
 }
 
+type Thumbnail = {
+  url: string;
+  height: number;
+  width: number;
+};
+
+type Category = {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+};
+
 type Content = {
   id: string;
   title: string;
@@ -20,12 +35,20 @@ type Content = {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
+  summary?: string;
+  thumbnail?: Thumbnail;
+  categories: Array<Category>;
 };
 
 const ArticleDetails: FC<Props> = ({ content }: Props) => (
   <>
     <Frame>
-      <Article title={content.title} body={content.body} />
+      <Article
+        title={content.title}
+        body={content.body}
+        publishedAt={content.publishedAt}
+        thumbnail={content.thumbnail?.url || ''}
+      />
     </Frame>
   </>
 );
