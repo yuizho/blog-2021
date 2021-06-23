@@ -17,6 +17,7 @@ const ArticleCards: FC<Props> = ({ articles }: Props) => (
           summary={article.summary}
           thumbnail={article.thumbnail}
           publishedAt={article.publishedAt}
+          tags={article.tags}
         />
       </div>
     ))}

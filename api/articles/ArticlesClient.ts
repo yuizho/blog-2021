@@ -98,7 +98,7 @@ export const fetchArticles = async () => {
   while (true) {
     // TODO: Error handling
     const response = await fetch(
-      `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail`,
+      `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail%2Ccategories`,
       {
         headers: createRequestHeaders(),
       },

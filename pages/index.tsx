@@ -29,6 +29,7 @@ const Home: FC<Props> = ({ contents }: Props) => (
           thumbnail: content.thumbnail?.url || '',
           summary: content.summary || '',
           publishedAt: content.publishedAt,
+          tags: content.categories.map((category) => category.name),
         }))}
       />
     </Frame>

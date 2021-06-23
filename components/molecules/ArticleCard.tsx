@@ -8,6 +8,7 @@ export type Props = {
   publishedAt: string;
   summary: string;
   thumbnail: string;
+  tags: Array<string>;
 };
 
 //  TODO: うまいことImageにしたいが崩れる
@@ -18,6 +19,7 @@ const ArticleCard: FC<Props> = ({
   publishedAt,
   summary,
   thumbnail,
+  tags,
 }: Props) => (
   <div
     key={id}
@@ -39,8 +41,15 @@ const ArticleCard: FC<Props> = ({
             {title}
           </a>
         </Link>
-        <p className="mt-2 text-sm  text-gray-600">{publishedAt}</p>
+        <div className="mt-1 text-sm  text-gray-600">{publishedAt}</div>
         <p className="mt-2 tracking-wide text-gray-600">{summary}</p>
+        <div className="flex flex-wrap">
+          {tags.map((tag) => (
+            <span className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-600">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   </div>

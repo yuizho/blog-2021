@@ -25,6 +25,7 @@ const ArticleDetails: FC<Props> = ({ content }: Props) => (
         body={content.body}
         publishedAt={content.publishedAt}
         thumbnail={content.thumbnail?.url || ''}
+        tags={content.categories.map((category) => category.name)}
       />
     </Frame>
   </>

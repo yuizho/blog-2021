@@ -6,18 +6,32 @@ type Props = {
   body: string;
   publishedAt: string;
   thumbnail: string;
+  tags: Array<string>;
 };
 
-const Article: FC<Props> = ({ title, body, publishedAt, thumbnail }: Props) => (
+const Article: FC<Props> = ({
+  title,
+  body,
+  publishedAt,
+  thumbnail,
+  tags,
+}: Props) => (
   <>
     <div className={styles.container}>
       <h1 className="text-gray-600 text-xl  font-semibold text-l tracking-tight">
         {title}
       </h1>
       <div className="mt-2 text-sm  text-gray-600">{publishedAt}</div>
+      <div className="flex flex-wrap">
+        {tags.map((tag) => (
+          <span className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-600">
+            {tag}
+          </span>
+        ))}
+      </div>
       {thumbnail && (
         <img
-          className="h-hull w-full object-cover my-5 rounded-xl"
+          className="h-hull w-full object-cover my-4 rounded-xl"
           src={thumbnail}
           alt="a thumbnail"
         />
