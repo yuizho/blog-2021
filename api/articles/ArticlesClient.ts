@@ -42,25 +42,37 @@ const createRequestHeaders = () => {
 };
 
 export const fetchArticleIds = async () => {
-  // TODO: Error handling
-  const response = await fetch(
-    'https://yuizho.microcms.io/api/v1/articles?fields=id',
-    {
-      headers: createRequestHeaders(),
-    },
-  )
-    .then((res) => res.json())
-    .then(
-      (json) =>
-        json as {
-          contents: Array<{ id: string }>;
-          totalCount: number;
-          offset: number;
-          limit: number;
-        },
-    );
+  const limit = 100;
+  let offset = 0;
+  let ids: Array<string> = [];
 
-  return response.contents.map((content) => content.id);
+  while (true) {
+    // TODO: Error handling
+    const response = await fetch(
+      `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id`,
+      {
+        headers: createRequestHeaders(),
+      },
+    )
+      .then((res) => res.json())
+      .then(
+        (json) =>
+          json as {
+            contents: Array<{ id: string }>;
+            totalCount: number;
+            offset: number;
+            limit: number;
+          },
+      );
+
+    ids = ids.concat(response.contents.map((content) => content.id));
+    if (response.totalCount <= ids.length) {
+      break;
+    }
+    offset += 1;
+  }
+
+  return ids;
 };
 
 export const fetchArticleBy = async (articleId: string) => {
@@ -78,15 +90,28 @@ export const fetchArticleBy = async (articleId: string) => {
 };
 
 export const fetchArticles = async () => {
-  // TODO: Error handling
-  const response = await fetch(
-    'https://yuizho.microcms.io/api/v1/articles?fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail',
-    {
-      headers: createRequestHeaders(),
-    },
-  )
-    .then((res) => res.json())
-    .then((json) => json as ArticlesResponse);
+  // TODO: paging
+  const limit = 100;
+  let offset = 0;
+  let contents: Array<Content> = [];
 
-  return response.contents;
+  while (true) {
+    // TODO: Error handling
+    const response = await fetch(
+      `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail`,
+      {
+        headers: createRequestHeaders(),
+      },
+    )
+      .then((res) => res.json())
+      .then((json) => json as ArticlesResponse);
+
+    contents = contents.concat(response.contents);
+    if (response.totalCount <= contents.length) {
+      break;
+    }
+    offset += 1;
+  }
+
+  return contents;
 };
