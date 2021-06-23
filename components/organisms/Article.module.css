@@ -1,0 +1,29 @@
+.container {
+  @apply p-6 my-6 border max-w-lg mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl;
+}
+
+.content {
+  @apply prose md:prose;
+}
+
+.content > h1 {
+  @apply text-xl font-semibold text-gray-600;
+}
+
+.content > h2 {
+  @apply text-lg font-semibold text-gray-600;
+}
+
+.content > h3,
+.content > h4 {
+  @apply font-semibold text-gray-600;
+}
+
+.content > blockquote {
+  @apply text-gray-500;
+}
+
+.content > p,
+.content > li {
+  @apply text-gray-600;
+}
