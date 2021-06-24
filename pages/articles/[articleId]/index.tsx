@@ -34,7 +34,7 @@ const ArticleDetails: FC<Props> = ({ content }: Props) => (
 export const getStaticPaths = async () => {
   const ids = await fetchArticleIds();
   return {
-    fallback: true,
+    fallback: 'blocking',
     paths: ids.map((id) => ({
       params: {
         articleId: id,
