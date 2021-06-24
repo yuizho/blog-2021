@@ -8,7 +8,7 @@ type Props = {
 const ArticleCards: FC<Props> = ({ articles }: Props) => (
   <>
     {articles.map((article) => (
-      <div className="mt-5">
+      <div className="mb-6">
         <ArticleCard
           key={article.id}
           id={article.id}
