@@ -34,7 +34,7 @@ const ArticleDetails: FC<Props> = ({ content }: Props) => (
 export const getStaticPaths = async () => {
   const ids = await fetchArticleIds();
   return {
-    fallback: false, // TODO: falseのままだとダメそう
+    fallback: true,
     paths: ids.map((id) => ({
       params: {
         articleId: id,
@@ -52,6 +52,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
     props: {
       content,
     },
+    revalidate: 180,
   };
 };
 
