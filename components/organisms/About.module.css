@@ -1,0 +1,12 @@
+.content {
+  @apply prose md:prose;
+}
+
+.content > h1 {
+  @apply text-xl font-semibold text-gray-600;
+}
+
+.content > p,
+.content > li {
+  @apply text-gray-600;
+}

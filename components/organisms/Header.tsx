@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Header: FC = () => (
   <>
-    <nav className="flex items-center justify-between flex-wrap  p-6">
+    <nav className="flex items-center  flex-wrap  p-6">
       <div className="flex items-center flex-shrink-0 text-gray-700 mr-6">
         <Link href="/">
           <a className="font-semibold text-xl tracking-tight hover:underline">
@@ -11,6 +11,9 @@ const Header: FC = () => (
           </a>
         </Link>
       </div>
+      <Link href="/about">
+        <a className="text-gray-700  text-sm underline">about</a>
+      </Link>
     </nav>
   </>
 );

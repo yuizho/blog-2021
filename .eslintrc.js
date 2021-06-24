@@ -6,6 +6,7 @@ module.exports = {
   extends: ['next', 'next/core-web-vitals', 'airbnb', 'prettier'],
   ignorePatterns: ['pages/_app.tsx', '*.stories.*'],
   rules: {
+    'no-undef': 'off',
     'no-use-before-define': 'off',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
