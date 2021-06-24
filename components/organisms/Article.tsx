@@ -1,4 +1,5 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+import Container from '../molecules/Container';
 import styles from './Article.module.css';
 
 type Props = {
@@ -17,7 +18,7 @@ const Article: FC<Props> = ({
   tags,
 }: Props) => (
   <>
-    <div className={styles.container}>
+    <Container>
       <h1 className="text-gray-600 text-xl  font-semibold text-l tracking-tight">
         {title}
       </h1>
@@ -43,7 +44,7 @@ const Article: FC<Props> = ({
           __html: `${body}`,
         }}
       />
-    </div>
+    </Container>
   </>
 );
 
