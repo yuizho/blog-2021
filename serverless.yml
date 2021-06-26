@@ -1,0 +1,10 @@
+microCmsToken: ${env.MICROCMS_API_KEY}
+
+yuizhoBlog:
+  component: '@sls-next/serverless-component@3.1.0'
+  inputs:
+    bucketName: yuizho-blog-bucket
+    name: yuizho-blog-function
+    build:
+      env:
+        API_KEY: ${microCmsToken}
