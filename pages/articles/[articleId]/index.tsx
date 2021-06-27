@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import React, { FC } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import Article from '../../../components/organisms/Article';
@@ -19,6 +20,15 @@ interface Params extends ParsedUrlQuery {
 
 const ArticleDetails: FC<Props> = ({ content }: Props) => (
   <>
+    <Head>
+      <meta name="og:title" content={content.title} />
+      {content.thumbnail && (
+        <meta name="og:image" content={content.thumbnail.url} />
+      )}
+      <meta name="og:description" content={content.summary || ''} />
+      <meta name="og:type" content="article" />
+    </Head>
+
     <Frame>
       <Article
         title={content.title}

@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import React, { FC } from 'react';
 import Frame from '../../components/templates/Frame';
 import About from '../../components/organisms/About';
@@ -6,10 +5,6 @@ import thumbnail from '../../public/yuizho.webp';
 
 const AboutPage: FC = () => (
   <>
-    <Head>
-      <title>blog</title>
-    </Head>
-
     <Frame>
       <About
         thumbnail={thumbnail}

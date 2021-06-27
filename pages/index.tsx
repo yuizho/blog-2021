@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import React, { FC } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import { Content, fetchArticles } from '../api/articles/ArticlesClient';
@@ -16,10 +15,6 @@ type Props = {
 
 const Home: FC<Props> = ({ contents }: Props) => (
   <>
-    <Head>
-      <title>blog</title>
-    </Head>
-
     <Frame>
       <ArticleCards
         articles={contents.map((content) => ({
