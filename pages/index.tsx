@@ -23,7 +23,7 @@ const Home: FC<Props> = ({ contents }: Props) => (
           url: `/articles/${content.id}`,
           thumbnail: content.thumbnail?.url || '',
           summary: content.summary || '',
-          publishedAt: content.publishedAt,
+          publishedAt: new Date(content.publishedAt),
           tags: content.categories.map((category) => category.name),
         }))}
       />

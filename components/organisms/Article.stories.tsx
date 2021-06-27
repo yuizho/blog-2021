@@ -11,7 +11,7 @@ const Template: Story = () => (
   <Article
     title="title"
     body="<p>test content!!!</p><ul><li>aaaa</li><li>bbbb</li></ul>"
-    publishedAt="2021-06-02"
+    publishedAt={new Date('2021-06-02')}
     thumbnail={image.toString()}
     tags={['Java', 'test']}
   />

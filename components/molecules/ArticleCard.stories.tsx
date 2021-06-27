@@ -13,7 +13,7 @@ const Template: Story = () => (
     title="これは仮のタイトルです"
     url="/articles/1"
     thumbnail={image.toString()}
-    publishedAt="2020-06-01"
+    publishedAt={new Date('2020-06-01')}
     summary="これはサマリーです。こんな感じで概要とかを書く感じです。折返しもちゃんとされますね。"
     tags={[
       'Java',

@@ -5,7 +5,7 @@ export type Props = {
   id: string;
   title: string;
   url: string;
-  publishedAt: string;
+  publishedAt: Date;
   summary: string;
   thumbnail: string;
   tags: Array<string>;
@@ -41,7 +41,9 @@ const ArticleCard: FC<Props> = ({
             {title}
           </a>
         </Link>
-        <div className="mt-1 text-sm  text-gray-600">{publishedAt}</div>
+        <div className="mt-1 text-sm  text-gray-600">
+          {publishedAt.toLocaleString()}
+        </div>
         <p className="mt-2 tracking-wide text-gray-600">{summary}</p>
         <div className="flex flex-wrap">
           {tags.map((tag) => (

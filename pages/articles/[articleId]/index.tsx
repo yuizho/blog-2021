@@ -33,7 +33,7 @@ const ArticleDetails: FC<Props> = ({ content }: Props) => (
       <Article
         title={content.title}
         body={content.body}
-        publishedAt={content.publishedAt}
+        publishedAt={new Date(content.publishedAt)}
         thumbnail={content.thumbnail?.url || ''}
         tags={content.categories.map((category) => category.name)}
       />

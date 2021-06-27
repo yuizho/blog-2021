@@ -5,7 +5,7 @@ import styles from './Article.module.css';
 type Props = {
   title: string;
   body: string;
-  publishedAt: string;
+  publishedAt: Date;
   thumbnail: string;
   tags: Array<string>;
 };
@@ -22,7 +22,9 @@ const Article: FC<Props> = ({
       <h1 className="text-gray-600 text-xl  font-semibold text-l tracking-tight">
         {title}
       </h1>
-      <div className="mt-2 text-sm  text-gray-600">{publishedAt}</div>
+      <div className="mt-2 text-sm  text-gray-600">
+        {publishedAt.toLocaleString()}
+      </div>
       <div className="flex flex-wrap">
         {tags.map((tag) => (
           <span className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-600">
