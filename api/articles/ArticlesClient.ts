@@ -1,4 +1,5 @@
 import content from '*.png';
+import { get } from '../RestClient';
 
 export type Thumbnail = {
   url: string;
@@ -35,35 +36,20 @@ type ArticlesResponse = {
   limit: number;
 };
 
-const createRequestHeaders = () => {
-  const requestHeaders = new Headers();
-  requestHeaders.set('X-API-KEY', process.env.API_KEY || '');
-  return requestHeaders;
-};
-
 export const fetchArticleIds = async () => {
   const limit = 100;
   let offset = 0;
   let ids: Array<string> = [];
 
   while (true) {
-    // TODO: Error handling
-    const response = await fetch(
+    const response = await get<{
+      contents: Array<{ id: string }>;
+      totalCount: number;
+      offset: number;
+      limit: number;
+    }>(
       `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id`,
-      {
-        headers: createRequestHeaders(),
-      },
-    )
-      .then((res) => res.json())
-      .then(
-        (json) =>
-          json as {
-            contents: Array<{ id: string }>;
-            totalCount: number;
-            offset: number;
-            limit: number;
-          },
-      );
+    );
 
     ids = ids.concat(response.contents.map((content) => content.id));
     if (response.totalCount <= ids.length) {
@@ -76,17 +62,9 @@ export const fetchArticleIds = async () => {
 };
 
 export const fetchArticleBy = async (articleId: string) => {
-  // TODO: Error handling
-  const content = await fetch(
+  return await get<Content>(
     `https://yuizho.microcms.io/api/v1/articles/${articleId}`,
-    {
-      headers: createRequestHeaders(),
-    },
-  )
-    .then((res) => res.json())
-    .then((json) => json as Content);
-
-  return content;
+  );
 };
 
 export const fetchArticles = async () => {
@@ -96,15 +74,9 @@ export const fetchArticles = async () => {
   let contents: Array<Content> = [];
 
   while (true) {
-    // TODO: Error handling
-    const response = await fetch(
+    const response = await get<ArticlesResponse>(
       `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail%2Ccategories`,
-      {
-        headers: createRequestHeaders(),
-      },
-    )
-      .then((res) => res.json())
-      .then((json) => json as ArticlesResponse);
+    );
 
     contents = contents.concat(response.contents);
     if (response.totalCount <= contents.length) {
