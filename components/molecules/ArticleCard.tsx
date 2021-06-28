@@ -49,7 +49,7 @@ const ArticleCard: FC<Props> = ({
         <p className="mt-2 tracking-wide text-gray-600">{summary}</p>
         <div className="flex flex-wrap">
           {tags.map((tag) => (
-            <Link href={`/?tag=${tag}`}>
+            <Link key={tag} href={`/?tag=${tag}`}>
               <a className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-700 hover:underline">
                 {tag}
               </a>
