@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Header: FC = () => (
   <>
-    <nav className="container mx-auto flex items-center flex-wrap px-2 py-6 md:max-w-3xl max-w-xl">
+    <nav className="mb-6 container mx-auto flex items-center flex-wrap px-2 py-6 md:max-w-3xl max-w-xl">
       <div className="flex items-center flex-shrink-0 text-gray-700 mr-6">
         <Link href="/">
           <a className="font-semibold text-xl tracking-tight hover:underline">
