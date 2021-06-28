@@ -23,3 +23,7 @@
 .content > li {
   @apply text-gray-600;
 }
+
+.content > iframe {
+  @apply mx-auto max-w-sm md:max-w-xl;
+}
