@@ -26,13 +26,15 @@ const ArticleCard: FC<Props> = ({
     className="border max-w-lg mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
   >
     <div className="md:flex">
-      <div className="md:flex-shrink-0">
+      <div className="cursor-pointer md:flex-shrink-0">
         {thumbnail && (
-          <img
-            className="h-60 w-full object-cover md:w-60"
-            src={thumbnail}
-            alt="a thumbnail"
-          />
+          <Link href={url}>
+            <img
+              className="h-60 w-full object-cover md:w-60"
+              src={thumbnail}
+              alt="a thumbnail"
+            />
+          </Link>
         )}
       </div>
       <div className="p-6">
