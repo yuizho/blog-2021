@@ -27,7 +27,10 @@ const Article: FC<Props> = ({
       </div>
       <div className="flex flex-wrap">
         {tags.map((tag) => (
-          <span className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-600">
+          <span
+            key={tag}
+            className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-600"
+          >
             {tag}
           </span>
         ))}
