@@ -1,4 +1,3 @@
-import content from '*.png';
 import { get } from '../RestClient';
 
 export type Thumbnail = {
@@ -51,14 +50,29 @@ export const fetchArticleIds = async () => {
       `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id`,
     );
 
-    ids = ids.concat(response.contents.map((content) => content.id));
-    if (response.totalCount <= ids.length) {
+    if (!response.ok) {
+      return {
+        ok: response.ok,
+        status: response.status,
+        body: [],
+      };
+    }
+
+    const current = response.body?.contents || [];
+    ids = ids.concat(current.map((content) => content.id));
+
+    const totalCount = response.body?.totalCount || 0;
+    if (totalCount <= ids.length) {
       break;
     }
     offset += 1;
   }
 
-  return ids;
+  return {
+    ok: true,
+    status: 200,
+    body: ids,
+  };
 };
 
 export const fetchArticleBy = async (articleId: string) => {
@@ -78,12 +92,26 @@ export const fetchArticles = async () => {
       `https://yuizho.microcms.io/api/v1/articles?limit=${limit}&offset=${offset}&fields=id%2Ctitle%2CcreatedAt%2CupdatedAt%2CpublishedAt%2CrevisedAt%2Csummary%2Cthumbnail%2Ccategories`,
     );
 
-    contents = contents.concat(response.contents);
-    if (response.totalCount <= contents.length) {
+    if (!response.ok) {
+      return {
+        ok: response.ok,
+        status: response.status,
+        body: [],
+      };
+    }
+    const current = response.body?.contents || [];
+    contents = contents.concat(current);
+
+    const totalCount = response.body?.totalCount || 0;
+    if (totalCount <= contents.length) {
       break;
     }
     offset += 1;
   }
 
-  return contents;
+  return {
+    ok: true,
+    status: 200,
+    body: contents,
+  };
 };

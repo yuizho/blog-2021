@@ -4,10 +4,28 @@ const createRequestHeaders = () => {
   return requestHeaders;
 };
 
+export type RestResult<T> = {
+  ok: boolean;
+  status: number;
+  body?: T;
+};
+
 export const get = async <T>(url: string) => {
-  return await fetch(url, {
+  const res = await fetch(url, {
     headers: createRequestHeaders(),
-  })
-    .then((res) => res.json())
-    .then((json) => json as T);
+  });
+
+  if (!res.ok) {
+    return {
+      ok: res.ok,
+      status: res.status,
+    };
+  }
+
+  const json = await res.json();
+  return {
+    ok: res.ok,
+    status: res.status,
+    body: json as T,
+  };
 };
