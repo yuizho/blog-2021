@@ -33,7 +33,7 @@ const Article: FC<Props> = ({
   return (
     <>
       <Container>
-        <h1 className="text-gray-600 text-xl  font-semibold text-l tracking-tight">
+        <h1 className="text-gray-600 text-xl font-semibold text-l tracking-tight">
           {title}
         </h1>
         <div className="mt-2 text-sm  text-gray-600">
@@ -51,7 +51,7 @@ const Article: FC<Props> = ({
         </div>
         {thumbnail && (
           <img
-            className="h-hull w-full object-cover my-4 rounded-xl"
+            className="h-hull w-full object-cover my-4"
             src={thumbnail}
             alt="a thumbnail"
           />

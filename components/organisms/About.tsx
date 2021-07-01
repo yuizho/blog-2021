@@ -23,13 +23,7 @@ const About: FC<Props> = ({ thumbnail, summary, links }: Props) => (
           About
         </h1>
         <div className="text-center">
-          <Image
-            className="rounded-xl"
-            width="240"
-            height="240"
-            src={thumbnail}
-            alt="a thumbnail"
-          />
+          <Image width="240" height="240" src={thumbnail} alt="a thumbnail" />
         </div>
         <p className="text-gray-600">{summary}</p>
 
