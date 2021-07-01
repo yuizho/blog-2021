@@ -23,7 +23,7 @@ const ArticleCard: FC<Props> = ({
 }: Props) => (
   <div
     key={id}
-    className="border max-w-lg mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+    className="border rounded-xl shadow-md overflow-hidden md:max-w-2xl max-w-lg"
   >
     <div className="md:flex">
       <div className="cursor-pointer md:flex-shrink-0">

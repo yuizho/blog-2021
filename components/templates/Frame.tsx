@@ -7,10 +7,14 @@ type Props = {
 };
 
 const Frame: FC<Props> = ({ children }: Props) => (
-  <div className="flex flex-col h-screen justify-between">
-    <Header />
-    <div className="mb-auto">{children}</div>
-    <Footer />
+  <div className="flex flex-col  h-screen justify-between">
+    <div className="flex justify-center mb-6">
+      <Header />
+    </div>
+    <div className="mx-auto mb-auto">{children}</div>
+    <div className="mt-6">
+      <Footer />
+    </div>
   </div>
 );
 

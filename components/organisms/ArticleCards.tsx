@@ -6,21 +6,20 @@ type Props = {
 };
 
 const ArticleCards: FC<Props> = ({ articles }: Props) => (
-  <>
+  <div className="flex flex-col space-y-6">
     {articles.map((article) => (
-      <div key={article.id} className="mb-6">
-        <ArticleCard
-          id={article.id}
-          title={article.title}
-          url={article.url}
-          summary={article.summary}
-          thumbnail={article.thumbnail}
-          publishedAt={article.publishedAt}
-          tags={article.tags}
-        />
-      </div>
+      <ArticleCard
+        key={article.id}
+        id={article.id}
+        title={article.title}
+        url={article.url}
+        summary={article.summary}
+        thumbnail={article.thumbnail}
+        publishedAt={article.publishedAt}
+        tags={article.tags}
+      />
     ))}
-  </>
+  </div>
 );
 
 export default ArticleCards;
