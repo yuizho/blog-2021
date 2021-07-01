@@ -11,7 +11,7 @@ const Frame: FC<Props> = ({ children }: Props) => (
     <div className="flex justify-center mb-6">
       <Header />
     </div>
-    <div className="mx-auto mb-auto">{children}</div>
+    <div className="flex justify-center mb-auto">{children}</div>
     <div className="mt-6">
       <Footer />
     </div>
