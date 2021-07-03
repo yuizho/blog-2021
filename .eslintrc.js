@@ -10,7 +10,6 @@ module.exports = {
     'no-use-before-define': 'off',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
-    '@next/next/no-img-element': 'off',
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', '.tsx'] },

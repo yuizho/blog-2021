@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export type Props = {
   id: string;
@@ -29,11 +30,14 @@ const ArticleCard: FC<Props> = ({
       <div className="cursor-pointer md:flex-shrink-0">
         {thumbnail && (
           <Link href={url}>
-            <img
-              className="h-60 w-full object-cover md:w-60"
-              src={thumbnail}
-              alt="a thumbnail"
-            />
+            <div className="relative h-60 w-full md:w-60">
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src={thumbnail}
+                alt="a thumbnail"
+              />
+            </div>
           </Link>
         )}
       </div>

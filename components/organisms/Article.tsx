@@ -1,6 +1,7 @@
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import React, { FC } from 'react';
+import Image from 'next/image';
 import Container from '../molecules/Container';
 import styles from './Article.module.css';
 import 'highlight.js/styles/rainbow.css';
@@ -50,11 +51,15 @@ const Article: FC<Props> = ({
           ))}
         </div>
         {thumbnail && (
-          <img
-            className="h-hull w-full object-cover my-4"
-            src={thumbnail}
-            alt="a thumbnail"
-          />
+          <div className="my-4">
+            <Image
+              width="800"
+              height="600"
+              objectFit="cover"
+              src={thumbnail}
+              alt="a thumbnail"
+            />
+          </div>
         )}
         <hr className="my-5" />
         <div
