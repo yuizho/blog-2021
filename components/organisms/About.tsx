@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Container from '../molecules/Container';
 import styles from './About.module.css';
+import LinkedText from '../Atoms/LinkedText';
 
 export type ExternalLinks = {
   name: string;
@@ -33,9 +33,7 @@ const About: FC<Props> = ({ thumbnail, summary, links }: Props) => (
         <ul>
           {links.map((link) => (
             <li>
-              <Link href={link.url}>
-                <a className="text-gray-700 hover:underline">{link.name}</a>
-              </Link>
+              <LinkedText href={link.url} size="md" text={link.name} />
             </li>
           ))}
         </ul>
