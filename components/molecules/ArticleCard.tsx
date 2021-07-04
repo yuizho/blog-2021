@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import LinkedTitle from '../Atoms/LinkedTitle';
 
 export type Props = {
   id: string;
@@ -42,11 +43,7 @@ const ArticleCard: FC<Props> = ({
         )}
       </div>
       <div className="p-6">
-        <Link href={url}>
-          <a className="text-lg font-semibold text-gray-700 hover:underline">
-            {title}
-          </a>
-        </Link>
+        <LinkedTitle href={url} size="lg" text={title} />
         <div className="mt-1 text-sm  text-gray-600">
           {publishedAt.toLocaleString()}
         </div>
