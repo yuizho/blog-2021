@@ -6,7 +6,7 @@ type Props = {
 };
 
 const ArticleCards: FC<Props> = ({ articles }: Props) => (
-  <div className="flex flex-col space-y-6">
+  <div className="flex flex-col space-y-6 md:max-w-2xl w-full max-w-lg">
     {articles.map((article) => (
       <ArticleCard
         key={article.id}

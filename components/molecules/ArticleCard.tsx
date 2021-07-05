@@ -24,10 +24,7 @@ const ArticleCard: FC<Props> = ({
   thumbnail,
   tags,
 }: Props) => (
-  <div
-    key={id}
-    className="border rounded-xl shadow-md overflow-hidden md:max-w-2xl max-w-lg"
-  >
+  <div key={id} className="border rounded-xl shadow-md overflow-hidden w-full">
     <div className="md:flex">
       <div className="cursor-pointer md:flex-shrink-0">
         {thumbnail && (
