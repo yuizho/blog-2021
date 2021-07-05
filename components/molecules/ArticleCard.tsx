@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import LinkedTitle from '../Atoms/LinkedTitle';
+import Tags from './Tags';
 
 export type Props = {
   id: string;
@@ -48,14 +49,8 @@ const ArticleCard: FC<Props> = ({
           {publishedAt.toLocaleString()}
         </div>
         <p className="mt-2 tracking-wide text-gray-600">{summary}</p>
-        <div className="flex flex-wrap">
-          {tags.map((tag) => (
-            <Link key={tag} href={`/?tag=${tag}`}>
-              <a className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-700 hover:underline">
-                {tag}
-              </a>
-            </Link>
-          ))}
+        <div className="mt-2">
+          <Tags tags={tags} />
         </div>
       </div>
     </div>

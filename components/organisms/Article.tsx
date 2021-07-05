@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Container from '../molecules/Container';
 import styles from './Article.module.css';
 import 'highlight.js/styles/rainbow.css';
+import Tags from '../molecules/Tags';
 
 type Props = {
   title: string;
@@ -40,15 +41,8 @@ const Article: FC<Props> = ({
         <div className="mt-2 text-sm  text-gray-600">
           {publishedAt.toLocaleString()}
         </div>
-        <div className="flex flex-wrap">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="mt-2 flex-shrink-0 pr-2 text-sm font-semibold text-gray-600"
-            >
-              {tag}
-            </span>
-          ))}
+        <div className="mt-2">
+          <Tags tags={tags} />
         </div>
         {thumbnail && (
           <div className="my-4">
