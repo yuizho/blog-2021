@@ -35,7 +35,7 @@ const Article: FC<Props> = ({
   return (
     <>
       <Container>
-        <h1 className="text-gray-600 text-xl font-semibold text-l tracking-tight">
+        <h1 className="text-gray-600 text-lg font-semibold text-l tracking-tight">
           {title}
         </h1>
         <div className="mt-2 text-sm  text-gray-600">
