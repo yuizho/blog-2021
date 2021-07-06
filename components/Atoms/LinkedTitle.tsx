@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 type Props = {
-  size: 'lg' | 'xl';
+  size: 'lg' | 'xl' | '2xl';
   href: string;
   text: string;
 };

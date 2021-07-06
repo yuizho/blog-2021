@@ -1,5 +1,5 @@
 .content {
-  @apply prose md:prose;
+  @apply prose md:prose max-w-lg md:max-w-3xl;
 }
 
 .content > h1 {
@@ -22,6 +22,10 @@
 .content > p,
 .content > li {
   @apply text-gray-600;
+}
+
+.content > pre {
+  @apply w-full;
 }
 
 .content > iframe {

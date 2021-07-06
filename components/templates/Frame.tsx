@@ -8,7 +8,7 @@ type Props = {
 
 const Frame: FC<Props> = ({ children }: Props) => (
   <div className="flex flex-col  h-screen justify-between">
-    <div className="flex justify-center mb-6">
+    <div className="flex justify-center">
       <Header />
     </div>
     <div className="flex justify-center mb-auto">{children}</div>
