@@ -8,7 +8,7 @@ const Header: FC = () => (
       <div className="flex items-center flex-shrink-0 text-gray-700 mr-6">
         <LinkedTitle href="/" size="xl" text="J'aime les ramens" />
       </div>
-      <LinkedText href="/about" size="md" text="about" />
+      <LinkedText href="https://github.com/yuizho" size="md" text="about" />
     </nav>
   </>
 );
