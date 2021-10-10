@@ -7,7 +7,7 @@ type Props = {
 
 const Tag: FC<Props> = ({ tag }: Props) => (
   <Link href={`/?tag=${tag}`}>
-    <a className="flex-shrink-0 pr-2 text-sm font-semibold text-gray-700 hover:underline">
+    <a className="tag flex-shrink-0 pr-2 text-sm font-semibold text-gray-700 hover:underline">
       {tag}
     </a>
   </Link>
