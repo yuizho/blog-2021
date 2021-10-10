@@ -29,6 +29,7 @@ const ArticleDetails: FC<Props> = ({ isOk, statusCode, content }: Props) => {
   return (
     <>
       <Head>
+        <title>{content.title}</title>
         <meta name="og:title" content={content.title} />
         {content.thumbnail && (
           <meta name="og:image" content={content.thumbnail.url} />
